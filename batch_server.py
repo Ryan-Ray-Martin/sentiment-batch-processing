@@ -1,16 +1,34 @@
 """
 Batch Processing Server
 
-This server uses Starlette to handle incoming batch data and performs sentiment analysis using Hugging Face Transformers.
+This application provides a robust, production-grade server for processing batch sentiment analysis requests. Built using Starlette, it efficiently handles incoming data streams and leverages Hugging Face Transformers for performing sentiment analysis. Designed for scalability and ease of integration, this server is a key component of Intrinsic Research Capital's analytical suite.
 
-Usage:
-  - Start serve with uvicorn batch_server:app
+Features:
+- **ASGI Server**: Utilizes Starlette for high-performance asynchronous request handling.
+- **Sentiment Analysis**: Employs the Hugging Face Transformers library to analyze text sentiment using the ProsusAI/finbert model.
+- **Queue-Based Processing**: Incorporates asynchronous task handling to manage batch processing efficiently.
 
-Example usage: 
-    
+Setup and Execution:
+1. **Start the Server**: Launch the server using Uvicorn with the command:
+    ```
+    uvicorn batch_server:app --host 0.0.0.0 --port 8000
+    ```
+
+2. **Send Requests**: Post batch data in JSON format to the server using `curl` or any HTTP client.
+
+Example Request:
+    ```
     curl -X POST -H "Content-Type: application/json" -d '[{"text": "Stocks rallied and the British pound gained."}, {"text": "The economy showed significant growth."}, {"text": "Investors are optimistic about the market."}]' http://localhost:8000/
+    ```
 
-Example result: [{"label":"positive","score":0.898361325263977},{"label":"positive","score":0.948479950428009},{"label":"positive","score":0.6735053658485413}]
+Example Response:
+    ```
+    [{"label":"positive","score":0.898361325263977},
+     {"label":"positive","score":0.948479950428009},
+     {"label":"positive","score":0.6735053658485413}]
+    ```
+
+This server is a part of Intrinsic Research Capital's suite of analytical tools, aiming to deliver advanced insights into textual data.
 
 """
 
