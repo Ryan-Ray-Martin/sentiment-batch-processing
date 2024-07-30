@@ -113,7 +113,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 For questions or further information, please contact:
 
-- **Project Maintainer**: [Your Name](mailto:your-email@example.com)
+- **Project Maintainer**: [Ryan Martin](mailto:ryanraymartin@gmail.com)
 - **Company**: Intrinsic Research Capital
 
 ---
