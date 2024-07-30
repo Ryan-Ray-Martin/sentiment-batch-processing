@@ -8,7 +8,6 @@ intrinsic-finbert/
 .env/
 
 # Docker files
-Dockerfile
 .dockerignore
 
 # System files
