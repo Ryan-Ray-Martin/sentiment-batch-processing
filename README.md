@@ -96,6 +96,19 @@ For development and testing, follow these steps:
    flake8 .
    ```
 
+4. **Cloud Formation Stack**
+
+   aws cloudformation create-stack \
+  --stack-name MySimplifiedEKSStack \
+  --template-body file://eks_template.yaml \
+  --parameters ParameterKey=ClusterName,ParameterValue=eks-cluster \
+               ParameterKey=NodeGroupName,ParameterValue=eks-nodegroup \
+               ParameterKey=NodeInstanceType,ParameterValue=t3.medium \
+               ParameterKey=SubnetIds,ParameterValue="subnet-0a9c0a3bc1c3e2135" \
+               ParameterKey=SecurityGroupIds,ParameterValue="sg-0f99af2cc7272cc4b" \
+  --capabilities CAPABILITY_NAMED_IAM
+
+
 ## Contributing
 
 Contributions are welcome! Please follow the standard GitHub workflow:
