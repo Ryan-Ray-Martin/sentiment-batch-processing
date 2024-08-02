@@ -17,4 +17,5 @@ steps:
       - "push"
       - "us-central1-docker.pkg.dev/intrinsic-research-431300/intrinsic-research/intrinsic-finbert:v1"
 options:
+  machineType: "E2_HIGHCPU_8"
   logging: CLOUD_LOGGING_ONLY
