@@ -96,18 +96,42 @@ For development and testing, follow these steps:
    flake8 .
    ```
 
-4. **Cloud Formation Stack**
+4. **Deploying to Google Kubernetes Engine (GKE)**
 
-   aws cloudformation create-stack \
-  --stack-name MySimplifiedEKSStack \
-  --template-body file://eks_template.yaml \
-  --parameters ParameterKey=ClusterName,ParameterValue=eks-cluster \
-               ParameterKey=NodeGroupName,ParameterValue=eks-nodegroup \
-               ParameterKey=NodeInstanceType,ParameterValue=t3.medium \
-               ParameterKey=SubnetIds,ParameterValue="subnet-0a9c0a3bc1c3e2135" \
-               ParameterKey=SecurityGroupIds,ParameterValue="sg-0f99af2cc7272cc4b" \
-  --capabilities CAPABILITY_NAMED_IAM
+   To deploy this application to Google Kubernetes Engine (GKE), follow these steps:
 
+   Create a GKE Cluster 
+   
+   ```bash
+   gcloud container clusters create ml-model-cluster \
+      --zone us-central1-a \
+      --num-nodes 3 \
+      --machine-type e2-standard-4
+   ```
+
+   Create a Kubernetes Deployment
+
+   ```bash
+   kubectl apply -f deployment.yaml
+   ```
+
+   Expose the Deployment as a Service
+   
+   ```bash
+   kubectl apply -f service.yaml
+   ```
+
+   Retrieve IP Addresses
+
+   ```bash
+   kubectl get services ml-model-service
+   ```
+
+   Test the Service
+
+   ```bash
+   curl -X POST -H "Content-Type: application/json" -d '[{"text": "Stocks rallied and the British pound gained."}, {"text": "The economy showed significant growth."}, {"text": "Investors are optimistic about the market."}]' http://<EXTERNAL-IP>:80/
+   ```
 
 ## Contributing
 
