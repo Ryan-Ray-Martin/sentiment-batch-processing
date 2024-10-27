@@ -112,7 +112,7 @@ For development and testing, follow these steps:
    Create a Kubernetes Deployment
 
    ```bash
-   kubectl apply -f deployment.yaml
+   kubectl apply -f deploy_model.yaml
    ```
 
    Expose the Deployment as a Service
