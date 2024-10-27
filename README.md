@@ -118,7 +118,7 @@ For development and testing, follow these steps:
    Expose the Deployment as a Service
    
    ```bash
-   kubectl apply -f service.yaml
+   kubectl apply -f model_serve.yaml
    ```
 
    Retrieve IP Addresses
